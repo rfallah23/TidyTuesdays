@@ -28,4 +28,7 @@ theme_bw()+
   theme(axis.title = element_text(size = 16,
                                   color = "purple"),
   panel.background = element_rect(fill = "pink"))
-                                
+  
+ggsave(here("week_03","output","TT1_penguin.png"))
+
+       
