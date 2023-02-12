@@ -34,5 +34,12 @@ theme_bw()+
   
 ggsave(here("week_03","output","TT1_penguin.png"))
 
+##this plot shows up significantly different in R than when saved in github###
+## I spent ages trying to trouble shoot with various data ammendments with the,###
+#axis title by removing limits or atleast raising x and y limits so that it express,##
+##the other funcions such as the point plots and the plot title, background colour etc##
+##there was more data in my console from this exercise than my entire harddrive :-S##
+##however I still enjoyed it thank you :)##
+
 
        
