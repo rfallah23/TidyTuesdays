@@ -22,8 +22,8 @@ ggplot(data=penguins,
       
   )+
 scale_color_manual(values = beyonce_palette(11))+
-  #scale_x_continuous(breaks = c(40,46,52),
-  #labels = c("low", "medium", "high"))+
+  scale_x_continuous(breaks = c(15,17.5,20),
+  labels = c("low", "medium", "high"))+
 theme_bw()+
   theme(axis.title = element_text(size = 16,
                                   color = "purple"),
