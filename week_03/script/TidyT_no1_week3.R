@@ -16,7 +16,16 @@ ggplot(data=penguins,
                      group = species,
                      color = species))+
   geom_boxplot()+
+  geom_smooth(aes(group = 1))+
   labs(x = "Bill Length (mm)",
        y = "Body Mass (g)"
-  )
-  
+      
+  )+
+scale_color_manual(values = beyonce_palette(11))+
+  scale_x_continuous(breaks = c(40,46,52),
+  labels = c("low", "medium", "high"))+
+theme_bw()+
+  theme(axis.title = element_text(size = 16,
+                                  color = "purple"),
+  panel.background = element_rect(fill = "pink"))
+                                  
