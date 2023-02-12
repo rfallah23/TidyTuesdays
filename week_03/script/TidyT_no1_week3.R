@@ -16,7 +16,7 @@ ggplot(data=penguins,
                      group = species,
                      color = species))+
   geom_boxplot()+
-  geom_smooth(aes(group = 1))+
+  geom_smooth(aes(group = "lm"))+
   labs(x = "Bill Length (mm)",
        y = "Body Mass (g)"
       
