@@ -13,7 +13,7 @@ library(ggplot2)
 library(rayshader)
 library(ggmap)
 library(ggsn)
-library(grid)
+library(here)
 
 
 install.packages("rayshader")
@@ -52,8 +52,10 @@ ggmap(ozggmap)
 ggmap(ozggmap)+
   geom_point(data = numbats3, aes(x = decimalLongitude, y = decimalLatitude,
                                   color = year), size = 3) +
-  ggtitle("Numbats in Australia")
+  ggtitle("Numbat sightings in Australia")
   
+ ggsave(here("Output", "Tidy_4", "Numbats_Tidy4.png"))
+
 ## really dont get why its showing numbats in 1900's! :(
              
 # I really spent a while converting the plots back and forward to different formats to make it readable for applying  
