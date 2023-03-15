@@ -24,7 +24,7 @@ geom_point(size = 7, colour = "red")+  ## making points more visible
                                   color = "blue"),
         panel.background = element_rect(fill = "pink"))+
 labs(title = "Number of Countries in regions of Africa",
-     size = 24)
+     size = 24)+
 
 ## sometimes I spend ages trying to do small adjustments
 #like widen areas for readability but all my hrs goes to problem solving rather than
