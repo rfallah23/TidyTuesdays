@@ -54,7 +54,7 @@ ggmap(ozggmap)+
                                   color = year), size = 3) +
   ggtitle("Numbat sightings in Australia")
   
- ggsave(here("Output", "Tidy_4", "Numbats_Tidy4.png"))
+ ggsave(here("Output", "Tidy_4", "Numbats_Tidy_4.png"))
 
 ## really dont get why its showing numbats in 1900's! :(
              
