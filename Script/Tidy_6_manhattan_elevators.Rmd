@@ -80,5 +80,7 @@ manhattan_elev <- active + deactive + plot_annotation(title = "Manhattan's activ
 
 manhattan_elev
 
+#ggsave(here("Output", "Tidy_6", "Tidy_6_manhattan_elevators.png"))
+
 ```
 
