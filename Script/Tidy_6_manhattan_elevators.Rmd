@@ -1,0 +1,84 @@
+---
+title: "Tidy 6 Elevators in Manhattan"
+author: "Roshan"
+date: "2023-04-15"
+output: 
+  html_document:
+    toc: TRUE
+    toc_float: TRUE
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+```
+
+
+## Load libraries
+```{r}
+
+library(here)
+library(ggplot2)
+library(tidyverse)
+library(dplyr)
+library(ggmap)
+library(patchwork)
+
+
+
+```
+
+
+## Load data
+
+```{r}
+
+tuesdata <- tidytuesdayR::tt_load('2022-12-06')
+
+elevators <- tuesdata$elevators
+
+#view(elevators) ## pretty huge no. of rows so reducing to just manhattan borough's active and deactive elevators on next line
+
+boroughs <- elevators[, c("Borough", "Device Status", "LONGITUDE", "LATITUDE")]
+
+
+# view(boroughs)
+
+
+manhattan <- c(lon = -73.9712, lat = 40.7831)
+map <- get_googlemap(center = manhattan, zoom = 14, maptype = "roadmap")
+m1 <- ggmap(map) ## loading baselayer
+
+ active <- m1 +   ## adding manhattan's active elevator geolocations to basemap m1
+   geom_point(data = boroughs,aes(x = LONGITUDE, y = LATITUDE))
+
+ active ### manhattan's active elevators 
+ 
+``` 
+ 
+## Creating 2nd ggmap
+
+```{r}
+
+ 
+ manhattan <- c(lon = -73.9712, lat = 40.7831) ## creating 2nd baselayer map
+map <- get_googlemap(center = manhattan, zoom = 14, maptype = "roadmap")
+m3 <- ggmap(map) #  m3 is the baselayer
+
+
+dismantled_boroughs <- boroughs %>% filter(`Device Status` == "D")  # filtering to show only deactive elevators
+##view(dismantled_boroughs) 
+
+
+deactive <- m3+   # integrating deactive elevator geolocations with a Manhattan baselayer ggmap
+  geom_point(data = dismantled_boroughs,aes(x = LONGITUDE, y = LATITUDE, color = "red"))  ## now the 2nd map is called "deactive"
+
+deactive+active ## using patchwork to add both maps together.
+
+manhattan_elev <- active + deactive + plot_annotation(title = "Manhattan's active elevators in black points and deactive elevators in red")
+ 
+
+
+manhattan_elev
+
+```
+
