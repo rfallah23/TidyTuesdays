@@ -69,7 +69,7 @@ theme(axis.title = element_text(size = 20, face = "bold"),
   redtext() 
 
   
-
+#ggsave(here("Output", "Tidy_7", "Tidy_7_eggs.png"))
 
 animate(g1, fps = 30)  ## sped this up loads as was very slow at 3 
 g1
