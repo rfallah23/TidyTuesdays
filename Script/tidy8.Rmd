@@ -1,0 +1,70 @@
+---
+title: "tidy8"
+author: "Roshan"
+date: "2023-05-12"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+
+
+## Load libraries
+```{r}
+
+library(here)
+library(ggplot2)
+library(tidyverse)
+library(dplyr)
+library(gganimate)
+
+```
+
+
+## Load Data
+```{r}
+tuesdata <- tidytuesdayR::tt_load('2023-04-25')
+tuesdata <- tidytuesdayR::tt_load(2023, week = 17)
+
+winners <- tuesdata$winners
+london_marathon <- tuesdata$london_marathon
+view(london_marathon)
+```
+
+
+## Filter data
+```{r}
+
+marathon_filtered <- london_marathon %>% 
+  filter(Year >= 2007 & Year <= 2019)
+
+# view(marathon_filtered)
+
+```
+
+
+## Create animated plot
+```{r}
+
+
+marathon_plot <- ggplot(marathon_filtered, aes(x = Year, y = Raised)) +
+  geom_col(stat = "identity", fill = "green") +
+  labs(title = "Total Amount Raised Per Year from 2007 to 2019",
+       x = "Year",
+       y = "Total Amount Raised") +
+  transition_time(Year)    ## transition by year
+
+# Animate the plot
+animate(marathon_plot, fps = 10)
+
+# anim_save(here("Output", "Tidy_8", "tidy8.gif"), animate(marathon_plot))
+
+
+
+
+
+
+```
+
